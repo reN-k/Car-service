@@ -22,17 +22,11 @@ namespace SL_Cars_v2
             } 
             else
             {
-                ErrorDisplay.ShowError($"You can't add detail {name} to car");
+                ErrorDisplayService.ShowError($"You can't add detail {name} to car");
                 // что-то с ним сделать
 
             }
         }
-
-        //public Detail(string name, int multiplier = 1)
-        //{
-        //    this.repairMultiplier = multiplier;
-        //    this.DetailName = name;
-        //}
 
         public void TakeDamage()
         {

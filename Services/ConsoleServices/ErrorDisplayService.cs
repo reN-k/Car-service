@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SL_Cars_v2
 {
-    static public class ErrorDisplay
+    static public class ErrorDisplayService
     {
         static public void ShowError(string errorText)
         {

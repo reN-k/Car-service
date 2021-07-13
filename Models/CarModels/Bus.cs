@@ -8,7 +8,7 @@ namespace SL_Cars_v2
     {
         public Bus()
         {
-            this.Name = "Truck";
+            this.Name = "Bus";
             this.details.Add(new Detail("Salon",4));
         }
     }

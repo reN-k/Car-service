@@ -17,23 +17,25 @@ namespace SL_Cars_v2
             this.details.Add(new Detail("Engine"));
         }
 
-        public Car(int detailQuantity)
+        public void CangeCarNameByUser()
         {
-            for (int i = 0; i < detailQuantity; i++)
-            {
-                details.Add(new Detail());
-            }
+            Console.WriteLine("Enter new car name: ");
+            Name = Console.ReadLine();
         }
 
         // IService
         public void Repair() 
         {
+            int price = 0;
+
             foreach (Detail detail in this.details)
             {
+                price += detail.RepairPrice();
                 detail.TakeRepair();
             }
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{this.Name} repaired");
+            Console.WriteLine($"{this.Name} repaired for {price}$");
+            Console.WriteLine();
             Console.ResetColor();
         }
         public void Checkup() 
@@ -52,6 +54,7 @@ namespace SL_Cars_v2
             Console.WriteLine();
             Console.ResetColor();
             Console.WriteLine($"Repair will cost {price}");
+            Console.WriteLine();
         }
 
         // IMove
@@ -59,7 +62,7 @@ namespace SL_Cars_v2
         {
             bool canWeGo = true;
 
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (Detail detail in this.details)
             {
                 if (detail.Heals == 0) canWeGo = false;
@@ -68,6 +71,7 @@ namespace SL_Cars_v2
             if (canWeGo) 
             {
                 Console.WriteLine($"Travel on {this.Name}");
+                Console.WriteLine();
                 foreach (Detail detail in this.details)
                 {
                     detail.TakeDamage();
@@ -76,6 +80,7 @@ namespace SL_Cars_v2
             else
             {
                 Console.WriteLine($"Sry, sir, but {this.Name} is broken :C");
+                Console.WriteLine();
             }
             Console.ResetColor();
         }

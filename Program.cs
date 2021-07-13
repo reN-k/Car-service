@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SL_Cars_v2.Menues;
+using SL_Cars_v2.Services;
+using System;
 using System.Collections.Generic;
 
 
@@ -13,10 +15,12 @@ namespace SL_Cars_v2
             Truck truck = new Truck();
             Bus bus = new Bus();
 
-            UserMenu firstPage = new UserMenu(carPark);
-
             Console.WriteLine("Welcome, friend");
-            firstPage.FirstPage();
+
+            Menu menu = new Menu(carPark,TypeService.GetCarTypesList());
+            MainMenu mainMenu = new MainMenu();
+
+
 
         }
     }

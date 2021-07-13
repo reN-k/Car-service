@@ -5,29 +5,32 @@ using System.Linq;
 
 namespace SL_Cars_v2
 {
-    static class KeywordHandler
+    static class KeywordHandlerService
     {
         public static string OneElementHandler(List<string> validValues)
         {
+            Console.Write("Write your choice: ");
             string inputData = Console.ReadLine();
 
             if (validValues.Contains(inputData))
             {
+                Console.WriteLine();
                 return inputData;
             }
             else
             {
-                ErrorDisplay.ShowError("Wrong value. Repeat: ");
+                Console.WriteLine();
+                ErrorDisplayService.ShowError("Wrong value. Repeat: ");
+                Console.WriteLine();
                 return OneElementHandler(validValues);
             }
         }
 
         public static List<string> SomeElementsHandler(List<string> validValues)
         {
+            Console.Write("Write your choices: ");
             string inputData = Console.ReadLine();
             var inputValues = inputData.Split(',');
-
-            //List<string> inputValues = inputData.Split(',').ToList();
 
             foreach (var inputValue in inputValues)
             {
@@ -35,15 +38,13 @@ namespace SL_Cars_v2
 
                 if (!validValues.Contains(inputValue))
                 {
-                    ErrorDisplay.ShowError($"Wrong value \"{inputValue}\". Repeat:");
+                    ErrorDisplayService.ShowError($"Wrong value \"{inputValue}\". Repeat:");
+                    Console.WriteLine();
                     return SomeElementsHandler(validValues);
                 }
             }
-            
+            Console.WriteLine();
             return inputValues.ToList();
-
         }
-
-
     }
 }
